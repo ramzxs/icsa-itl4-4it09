@@ -23,6 +23,8 @@ public class Basics {
         float f = 1.23F;
         double d = 1.23454454;
         boolean bool = true; // false
+        // void
+        // null
 
         /**
          * EXPRESSIONS, OPERATORS 
@@ -59,8 +61,8 @@ public class Basics {
 
         // CHALLENGE
         // f(x) = 9x^2 + 6x + 3
-        int x = ?;
-        int y = ?;
+        int x = 2;
+        int y = (9 * (x * x)) + (6 * x) + 3;
         System.out.println(y);
     }
 }
