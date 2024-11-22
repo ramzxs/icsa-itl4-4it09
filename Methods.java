@@ -35,6 +35,6 @@ public class Methods {
 
 
     static float getQuotient(int a, int b) {
-        return (float) a / b; // Type Casting
+        return ((float) a / b); // Type Casting
     }
 }
