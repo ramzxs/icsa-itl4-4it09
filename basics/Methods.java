@@ -1,3 +1,5 @@
+package basics;
+
 public class Methods {
     // Class Members / Global variables
     int a = 3;
@@ -11,17 +13,15 @@ public class Methods {
         // Method call
         sayHi(a);
 
-
         Methods m = new Methods();
         System.out.println(m.a);
-
 
         System.out.println("Quotient: " + getQuotient(15, 4));
     }
 
     // Method Declaration
     // Method/Function Signature
-    // modifiers returnDataType methodName(parametersList) { body } 
+    // modifiers returnDataType methodName(parametersList) { body }
     static void sayHi(int passedVariable) {
         System.out.println("Hi!");
 
@@ -32,7 +32,6 @@ public class Methods {
         Methods m = new Methods();
         System.out.println(m.a);
     }
-
 
     static float getQuotient(int a, int b) {
         return ((float) a / b); // Type Casting

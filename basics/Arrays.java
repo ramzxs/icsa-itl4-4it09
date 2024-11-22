@@ -1,3 +1,5 @@
+package basics;
+
 /* DATA STRUCTURES AND ALGORITHMS */
 public class Arrays {
     public static void main(String[] args) {
@@ -37,7 +39,7 @@ public class Arrays {
         System.out.println("Encrypted: " + encrypt(plainText, 10));
     }
 
-    static String encrypt(String plainText, int shift) {
+    public static String encrypt(String plainText, int shift) {
         char[] allowedchars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
                 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
                 'U', 'V', 'W', 'X', 'Y', 'Z',

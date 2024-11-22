@@ -1,3 +1,5 @@
+package basics;
+
 public class Branching {
     public static void main(String[] args) {
         System.out.println("JAVA BRANCHING");
@@ -99,7 +101,7 @@ public class Branching {
                             "\t2. iPhone 15\r\n" + //
                             "\t3. iPhone 14");
                     char choice3 = '2';
-                    
+
                     switch (choice3) {
                         case '1':
                             System.out.println("You have selected: iPhone 16");

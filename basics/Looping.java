@@ -1,3 +1,5 @@
+package basics;
+
 public class Looping {
     public static void main(String[] args) {
         System.out.println("JAVA LOOPING");
@@ -7,7 +9,7 @@ public class Looping {
         int i = 1;
         do {
             System.out.println(i++);
-        } while(i < 10);
+        } while (i < 10);
 
         // while
         System.out.println("while");
@@ -24,13 +26,13 @@ public class Looping {
 
         // CHALLENGE
         // Dimension of the Square: 7
-        // *******  // counter == 1
-        // *     *
-        // *     *
-        // *     *
-        // *     *
-        // *     *
-        // *******  // counter == dimension
+        // ******* // counter == 1
+        // * *
+        // * *
+        // * *
+        // * *
+        // * *
+        // ******* // counter == dimension
         int dim = 7;
 
         // Using 1 loop
@@ -38,7 +40,7 @@ public class Looping {
             if (a == 1 || a == dim) {
                 System.out.println("*".repeat(dim));
             } else {
-                System.out.println("*" + " ".repeat(dim - 2) +  "*");
+                System.out.println("*" + " ".repeat(dim - 2) + "*");
             }
         }
 
@@ -46,7 +48,7 @@ public class Looping {
         System.out.println("Using 2 loops");
         for (int b = 1; b <= dim; b++) {
             for (int c = 1; c <= dim; c++) {
-                if (b == 1 || b == dim)  {
+                if (b == 1 || b == dim) {
                     System.out.print("* ");
                 } else {
                     if (c == 1 || c == dim) {
