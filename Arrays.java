@@ -24,7 +24,7 @@ public class Arrays {
         System.out.println(alphabet2[2]);
         System.out.println(alphabet2[3] = 'd'); // assign 'd' to the variable, then retrieve value
 
-        
+
         System.out.println("CAESAR'S CIPHER");
         // CHALLENGE
         // CAESAR CIPHER (Encryption)
@@ -32,22 +32,30 @@ public class Arrays {
         // Cipher: 3
         // Plaint Text: "APPLE"
         // Encrypted: "DSSOH"
+        String plainText = "APPLE1239";
+        System.out.println("Plaint Text: " + plainText);
+        System.out.println("Encrypted: " + encrypt(plainText, 10));
+    }
+
+    static String encrypt(String plainText, int shift) {
         char[] allowedchars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
                 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
                 'U', 'V', 'W', 'X', 'Y', 'Z',
                 '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-        int shift = 3;
 
-        String plainText = "APPLE";
+        char[] plains = plainText.toCharArray(); // {'A','P','P','L','E'}  0..4
+        char[] encs = new char[plains.length];   // {'','','','',''}       0..4
 
-        System.out.print("Plain Text: ");
-        char[] plainTextChars = plainText.toCharArray();
-        for (int i = 0; i < plainTextChars.length; i++) {
-            System.out.print(plainTextChars[i]);
+        for (int i = 0; i < plains.length; i++) {
+            for (int a = 0; a < allowedchars.length; a++) {
+                if (plains[i] == allowedchars[a]) {
+                    encs[i] = allowedchars[(a + shift) % allowedchars.length];
+                    // 9 = 36th Char = Index 35
+                    // 35 + 1 = 36 % 36 = 1 r 0
+                }
+            }
         }
-        System.out.println();
-
-        String encrypted = "???";
-        System.out.println("Encrypted: " + encrypted);
+        
+        return String.copyValueOf(encs);
     }
 }
