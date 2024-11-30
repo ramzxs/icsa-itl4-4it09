@@ -1,6 +1,6 @@
-package basics; // No need if you did not create 'basics' folder
+// package x;
 
-// import *
+// import lib.class;
 
 public class Intro {
     public static void main(String[] args) { // main() Method/Function Signature
@@ -27,5 +27,8 @@ public class Intro {
 
         // Concatenate strings using + operator
         System.out.println("String 1 " + '|' + " String 2"); // "String 1 | String 2"
+
+        // Search for 'sout'
+        System.out.println("Shortcut");
     }
 }
