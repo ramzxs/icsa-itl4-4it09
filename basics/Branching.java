@@ -4,55 +4,67 @@ public class Branching {
     public static void main(String[] args) {
         System.out.println("JAVA BRANCHING");
 
+        // 1. if Statement
         char choice = 'Y';
-
-        /* if Statement */
         if (choice == 'Y') {
             System.out.println("You said yes.");
         }
 
-        /* if-else Statement */
+        // 2. if-else Statement
+        choice = 'N';
         if (choice == 'Y') {
             System.out.println("You said yes.");
         } else {
             System.out.println("You said no.");
         }
 
-        /* if-else-if Statement */
-        /*
-         * MENUS
-         * A = Software
-         * B = Hardware
-         * C = Network
-         */
-        choice = 'B';
-        if (choice == 'A') {
-            System.out.println("Software");
-        } else if (choice == 'B') {
-            System.out.println("Hardware");
-        } else if (choice == 'C') {
-            System.out.println("Network");
+        // 3. if-else-if Statement
+        int a = 101;
+        if (a < 0) {
+            System.out.println("Negative");
+        } else if (a == 0) {
+            System.out.println("Zero");
+        } else if (a > 0 && a <= 100) { // true && true ==> true
+            System.out.println("Positive (up to 100)");
         } else {
-            System.out.println("Invalid");
+            System.out.println("Else (more than 100)");
         }
 
-        /* switch Statement */
-        // Do not use Strings, use chars only
-        choice = 'A';
-        switch (choice) {
+        // 4. switch Statement
+        char c = 'A';
+        switch (c) {
             case 'A':
-                System.out.println("Software");
+                System.out.println("First Set");
                 // break;
             case 'B':
-                System.out.println("Hardware");
+                System.out.println("Second Set");
                 break;
-            case 'C':
-                System.out.println("Network");
-                break;
-
             default:
-                break;
+                System.out.println("Others");
         }
+
+        // CHALLENGE
+        // Grading System
+        // 0-50 Fail
+        // 51-75 Pass
+        // 76-90 Merit
+        // 91-100 Distinction
+        int grade = 100;
+        String level = "";
+        if (grade >= 0 && grade <= 50) {
+            level = "Fail";
+        } else if (grade >= 51 && grade <= 75) {
+            level = "Pass";
+        } else if (grade >= 76 && grade <= 90) {
+            level = "Merit";
+        } else if (grade >= 91 && grade <= 100) {
+            level = "Distinction";
+        } else {
+            level = "Invalid";
+        }
+        System.out.println("Grade: " + grade);
+        System.out.println("Level: " + level);
+
 
         // CHALLENGE
         /*
@@ -74,11 +86,13 @@ public class Branching {
          * 3. iPhone 14
          * If 3:
          * Select a model:
-         * 1. Pura 70 Ultra
+         * 1. Huawei MatePad
+         * 2. Pura 70 Ultra
          * If N:
          * Good bye!
          */
 
+        
         System.out.println("Do you want to purchase a phone? [Y or N]");
         char choice1 = 'Y';
         if (choice1 == 'Y') {
