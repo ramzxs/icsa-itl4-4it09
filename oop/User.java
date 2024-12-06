@@ -16,8 +16,12 @@ public class User { // extends java.lang.Object
     }
 
     // Methods
-    String getAccount() {
-        return account;
+    public String getAccount() throws Exception { // Error Handling
+        if (account.equals("")) {
+            throw new Exception();
+        } else {
+            return account;
+        }
     }
 
     // toString() 
