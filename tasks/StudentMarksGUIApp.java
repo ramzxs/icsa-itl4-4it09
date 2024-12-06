@@ -19,11 +19,10 @@ public class StudentMarksGUIApp extends JFrame {
 
 
         // Using Array of Objects
-        StudentMark[] studentMarks = new StudentMark[4];
+        StudentMark[] studentMarks = new StudentMark[3];
         studentMarks[0] = new StudentMark("Jane", 40, 20);
         studentMarks[1] = new StudentMark("Jon", 70, 60);
         studentMarks[2] = new StudentMark("Stewart", 80, 75);
-        studentMarks[3] = new StudentMark("Test", 50, 60);
 
         // Column Names
         String[] columns = { "STUDENT", "MATH", "PHYSICS" };
