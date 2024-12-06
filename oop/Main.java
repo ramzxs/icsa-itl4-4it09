@@ -34,5 +34,26 @@ public class Main {
         UserSession userSession = new UserSession();
         userSession.setUser(new User());
         userSession.getStart();
+
+        // POLYMORPHISM
+        // Mother Class Instance <-- Subclass Instance
+        Account account = new Account();
+        account = new SavingsAccount();
+        account = new CheckingAccount();
+
+        // ABSTRACTION
+        // Force custom implementation
+        // Cannot instantiate
+        UserAuthenticate ua = new UserAuthenticate() {
+            @Override
+            public void login() {
+                // Own implementation
+            }
+
+            @Override
+            public void logout() {
+                // Own implementation
+            }
+        };
    }
 }
