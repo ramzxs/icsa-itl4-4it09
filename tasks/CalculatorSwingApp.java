@@ -1,16 +1,20 @@
 package tasks;
 
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 public class CalculatorSwingApp extends JFrame {
-    JLabel lblExpression = new JLabel("Expression");
-    JLabel lblResult = new JLabel("Result");
+    JLabel lblExpression = new JLabel("Expression   ");
+    JLabel lblResult = new JLabel("Result   ");
     JButton[] btnNumbers = new JButton[10];
     JButton[] btnOperators = new JButton[7];
 
@@ -19,26 +23,36 @@ public class CalculatorSwingApp extends JFrame {
     }
 
     public CalculatorSwingApp() {
-        setTitle("Calculator Swing App");
-        setSize(600, 600);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setTitle("Calculator Swing App");
+        this.setSize(600, 600);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // Numbers:   0 1 2 3 4 5 6 7 8 9
         // Operators: =    + - * / %    C
         // Example:   150 + 10% --> 150 + 15 = --> 165
 
-        setLayout(new GridBagLayout());
+        this.setLayout(new GridBagLayout());
+        Font font = new Font("Arial", Font.PLAIN, 16);
+        this.setFont(font);
         
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = (float) 1/4;
         gbc.weighty = (float) 1/7;
 
+
+        // DISPLAY
+        Font font1 = new Font("Arial", Font.PLAIN, 16);
+        lblExpression.setFont(font1);
+        lblExpression.setHorizontalAlignment(SwingConstants.RIGHT);
         gbc.gridwidth = 3;
         gbc.gridx = 0;
         gbc.gridy = 0;
         this.add(lblExpression, gbc);
 
+        Font font2 = new Font("Arial", Font.BOLD, 32);
+        lblResult.setFont(font2);
+        lblResult.setHorizontalAlignment(SwingConstants.RIGHT);
         gbc.gridheight = 2;
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -102,6 +116,20 @@ public class CalculatorSwingApp extends JFrame {
         gbc.gridx = 2;
         this.add(btnNumbers[9], gbc);
 
+        ActionListener actionListenerNumbers = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                processNumber(e.getActionCommand());
+            }
+        };
+
+        for (int i = 0; i < btnNumbers.length; i++) {
+            btnNumbers[i].setActionCommand(i + "");
+            btnNumbers[i].addActionListener(actionListenerNumbers);
+            btnNumbers[i].setFont(font);
+        }
+
+
         // OPERATORS
         gbc.gridx = 3;
 
@@ -133,6 +161,36 @@ public class CalculatorSwingApp extends JFrame {
         gbc.gridy = 0;
         this.add(btnOperators[6], gbc);
 
-        setVisible(true);
+
+        ActionListener actionListenerOperators = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                processOperator(e.getActionCommand());
+            }
+        };
+
+        for (int i = 0; i < btnOperators.length; i++) {
+            btnOperators[i].setActionCommand(btnOperators[i].getText());
+            btnOperators[i].addActionListener(actionListenerOperators);
+            btnOperators[i].setFont(font);
+        }
+
+
+        // UI
+        this.setVisible(true);
+    }
+
+
+    // LOGIC
+
+    String termLeft = "", termRight = ""; 
+    String operatorPrevious = "", operatorCurrent = "";
+
+    void processNumber(String n) {
+        System.out.println("Number: " + n);
+    }
+
+    void processOperator(String op) {
+        System.out.println("Operator: " + op);
     }
 }
