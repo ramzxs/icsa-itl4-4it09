@@ -18,6 +18,7 @@ public class HelloWorld {
 
         Scanner kb = new Scanner(System.in);  // Wait for  user input
         kb.nextLine();
+        kb.close();
 
         // Deploying Java Apps
         // JAR: Java Archive File (apk, exe)

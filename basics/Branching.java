@@ -146,7 +146,7 @@ public class Branching {
             }
 
         } else if (choice1 == 'N') {
-            System.out.println("Good bye!");
+            System.out.println("Goodbye!");
         } else {
             System.out.println("Invalid");
         }
