@@ -80,11 +80,11 @@ public class Arrays {
         System.out.println();
 
 
-        System.out.println("Encrypted: " + encrypt("ATTACKFRONT", 5));
+        System.out.println("Encrypted: " + caesarCipher("ATTACKFRONT", 5));
     }
 
 
-    public static String encrypt(String plainText, int cipher) {
+    public static String caesarCipher(String plainText, int cipher) {
         System.out.println("CEASAR'S CIPHER (METHOD)");
         System.out.println("Plain Text: " + plainText);
         System.out.println("Cipher: " + cipher);
