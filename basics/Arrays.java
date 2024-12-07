@@ -18,20 +18,20 @@ public class Arrays {
         System.out.println("Last Item: " + nums[5]);
 
 
-        char[] alphabet = { 'a', 'b', 'c' }; // 0 1 2
-        System.out.println("Length: " + alphabet.length);
-        System.out.println("Second Item: " + alphabet[1]);
-        alphabet[1] = 'B';
-        System.out.println("Second Item: " + alphabet[1]);
+        char[] chars1 = { 'a', 'b', 'c' }; // 0 1 2
+        System.out.println("Length: " + chars1.length);
+        System.out.println("Second Item: " + chars1[1]);
+        chars1[1] = 'B';
+        System.out.println("Second Item: " + chars1[1]);
 
 
-        char[] alphabet2 = new char[ alphabet.length + 1 ]; // 3 + 1
-        for (int i = 0; i < alphabet.length; i++) {
-            alphabet2[i] = alphabet[i];
+        char[] chars2 = new char[ chars1.length + 1 ]; // 3 + 1
+        for (int i = 0; i < chars1.length; i++) {
+            chars2[i] = chars1[i];
         } // alphabet2 = { 'a', 'B', 'c', null }
-        System.out.println("Third Element: " + alphabet2[2]);
-        System.out.println("Fourth Element: " + alphabet2[3]);
-        System.out.println("Fourth Element: " + (alphabet2[3] = 'D')); // assign 'D' to the variable, then retrieve value
+        System.out.println("Third Element: " + chars2[2]);
+        System.out.println("Fourth Element: " + chars2[3]);
+        System.out.println("Fourth Element: " + (chars2[3] = 'D')); // assign 'D' to the variable, then retrieve value
 
 
         System.out.println("CAESAR'S CIPHER");
@@ -45,9 +45,50 @@ public class Arrays {
         // Plaint Text: "APPLE"
         // Encrypted:   "DSSOH"
         String plainText = "APPLE123";
-        System.out.println("Plaint Text: " + plainText);
-        System.out.println("Encrypted: " + encrypt(plainText, 10));
+        int cipher = 3;
+
+        System.out.println("Plain Text: " + plainText);
+        System.out.println("Cipher: " + cipher);
+
+        char[] alphabet = {
+            'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+            '0','1','2','3','4','5','6','7','8','9'
+        };
+
+        char[] charsPlainText = plainText.toCharArray();            // {'A','P','P','L','E','1','2','3'}
+        char[] charsEncrypted = new char[ charsPlainText.length ];  // {null,null,null,null,null,null,null,null}
+
+        // PSEUDOCODE
+        // find the plain character from the alphabet
+        //     get the character cipher times to the right
+        //         save the value
+        for (int i = 0; i < charsPlainText.length; i++) {
+            for (int j = 0; j < alphabet.length; j++) {
+                if (alphabet[j] == charsPlainText[i]) {
+                    // System.out.println("Index of " + charsPlainText[i] + ": " + j);
+                    // System.out.println("Index + Cipher: " + (j + cipher));
+                    // System.out.println("New Character: " + alphabet[j + cipher]);
+                    charsEncrypted[i] = alphabet[j + cipher];
+                    break;
+                }
+            }
+        }
+        System.out.print("Encrypted: ");
+        for (int i = 0; i < charsEncrypted.length; i++) {
+            System.out.print(charsEncrypted[i]);
+        }
+        System.out.println();
+
+
+        // System.out.println("Encrypted: " + encrypt(plainText, 10));
     }
+
+
+
+
+
+
+
 
     public static String encrypt(String plainText, int shift) {
         char[] allowedchars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
