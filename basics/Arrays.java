@@ -60,7 +60,7 @@ public class Arrays {
 
         // PSEUDOCODE
         // find the plain character from the alphabet
-        //     get the character cipher times to the right
+        //     get the character cipher-times to the right
         //         save the value
         for (int i = 0; i < charsPlainText.length; i++) {
             for (int j = 0; j < alphabet.length; j++) {
@@ -68,7 +68,7 @@ public class Arrays {
                     // System.out.println("Index of " + charsPlainText[i] + ": " + j);
                     // System.out.println("Index + Cipher: " + (j + cipher));
                     // System.out.println("New Character: " + alphabet[j + cipher]);
-                    charsEncrypted[i] = alphabet[j + cipher];
+                    charsEncrypted[i] = alphabet[(j + cipher) % alphabet.length];
                     break;
                 }
             }
@@ -80,29 +80,27 @@ public class Arrays {
         System.out.println();
 
 
-        // System.out.println("Encrypted: " + encrypt(plainText, 10));
+        System.out.println("Encrypted: " + encrypt("ATTACKFRONT", 5));
     }
 
 
+    public static String encrypt(String plainText, int cipher) {
+        System.out.println("CEASAR'S CIPHER (METHOD)");
+        System.out.println("Plain Text: " + plainText);
+        System.out.println("Cipher: " + cipher);
 
-
-
-
-
-
-    public static String encrypt(String plainText, int shift) {
         char[] allowedchars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
                 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
                 'U', 'V', 'W', 'X', 'Y', 'Z',
                 '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
-        char[] plains = plainText.toCharArray(); // {'A','P','P','L','E'}  0..4
-        char[] encs = new char[plains.length];   // {'','','','',''}       0..4
+        char[] plains = plainText.toCharArray();
+        char[] encs = new char[plains.length];
 
         for (int i = 0; i < plains.length; i++) {
             for (int a = 0; a < allowedchars.length; a++) {
                 if (plains[i] == allowedchars[a]) {
-                    encs[i] = allowedchars[(a + shift) % allowedchars.length];
+                    encs[i] = allowedchars[(a + cipher) % allowedchars.length];
                     // 9 = 36th Char = Index 35
                     // 35 + 1 = 36 % 36 = 1 r 0
                 }
