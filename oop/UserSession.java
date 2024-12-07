@@ -3,11 +3,13 @@ package oop;
 import java.util.Date;
 
 public class UserSession {
+    // Fields
     private User user;
     private Date start;
     private Date end;
     private String host;
 
+    // GETTERS & SETTERS
 
     public User getUser() {
         return user;
@@ -40,9 +42,6 @@ public class UserSession {
     }
     public void setHost(String host) {
         this.host = host;
-    }
-
-    // GETTERS & SETTERS
-    
+    }  
 
 }

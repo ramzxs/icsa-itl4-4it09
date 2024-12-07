@@ -1,12 +1,16 @@
 package oop;
 
-import java.util.Date;
-
 public class Main {
     public static void main(String[] args) {
-        System.out.print("Main");
+        System.out.println("JAVA OOP MAIN");
 
-        /* OOP, Non-Procedural Way
+        /* Procedural Programming
+        step1();
+        step2();
+        processA();
+        processB(); */
+
+        /* Object-Oriented Programming
         User.login();
         User.authenticate();
         Main.loadScreen(); */
@@ -17,7 +21,7 @@ public class Main {
         user.username = "root";
         user.password = "admin";
         user.account = "0001";
-        System.out.println(user.toString());
+        System.out.println("User object converted to String: " + user.toString());
 
         // OOP CONCEPTS
 
@@ -30,29 +34,38 @@ public class Main {
 
         // ENCAPSULATION
         // Protect internal data
-        // Implement additional logic
+        // Implement policy / additional logic
         UserSession userSession = new UserSession();
+        // userSession.user = null; (No Direct Access)
         userSession.setUser(new User());
+        // System.out.println(userSession.start);
         userSession.getStart();
 
         // POLYMORPHISM
-        // Mother Class Instance <-- Subclass Instance
+        // Super Class Instance <-- Subclass Instance
         Account account = new Account();
+        // SavingsAccount sa2 = new SavingsAccount();
+        // CheckingAccount ca = new CheckingAccount();
         account = new SavingsAccount();
         account = new CheckingAccount();
+
+
 
         // ABSTRACTION
         // Force custom implementation
         // Cannot instantiate
+        // UserAuthenticate ua = new UserAuthenticate();
+        // ua.login();
+        // ua.logout();        
         UserAuthenticate ua = new UserAuthenticate() {
             @Override
             public void login() {
-                // Own implementation
+                // TODO
             }
 
             @Override
             public void logout() {
-                // Own implementation
+                // TODO
             }
         };
    }

@@ -87,7 +87,7 @@ public class Arrays {
 
 
     public static String caesarCipher(String plainText, int cipher) {
-        System.out.println("CEASAR'S CIPHER (METHOD)");
+        System.out.println("CAESAR'S CIPHER (METHOD)");
         System.out.println("Plain Text: " + plainText);
         System.out.println("Cipher: " + cipher);
 
