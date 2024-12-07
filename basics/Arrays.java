@@ -69,6 +69,8 @@ public class Arrays {
                     // System.out.println("Index + Cipher: " + (j + cipher));
                     // System.out.println("New Character: " + alphabet[j + cipher]);
                     charsEncrypted[i] = alphabet[(j + cipher) % alphabet.length];
+                    // 9 = 36th Char = Index 35
+                    // 35 + 1 = 36 % 36 = 1 r 0
                     break;
                 }
             }
@@ -95,18 +97,16 @@ public class Arrays {
                 '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
         char[] plains = plainText.toCharArray();
-        char[] encs = new char[plains.length];
+        String enc = "";
 
         for (int i = 0; i < plains.length; i++) {
             for (int a = 0; a < allowedchars.length; a++) {
                 if (plains[i] == allowedchars[a]) {
-                    encs[i] = allowedchars[(a + cipher) % allowedchars.length];
-                    // 9 = 36th Char = Index 35
-                    // 35 + 1 = 36 % 36 = 1 r 0
+                    enc += allowedchars[(a + cipher) % allowedchars.length];
                 }
             }
         }
         
-        return String.copyValueOf(encs);
+        return enc;
     }
 }
