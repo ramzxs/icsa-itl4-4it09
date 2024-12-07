@@ -1,40 +1,50 @@
 package basics;
 
 /* DATA STRUCTURES AND ALGORITHMS */
+
 public class Arrays {
     public static void main(String[] args) {
         System.out.println("JAVA ARRAYS");
 
         // Fixed set/list of similar / same data type items
         int[] nums;
-        nums = new int[5]; // Initialize / Dimension
+        nums = new int[6]; // Initialize / Dimension
         nums[0] = 10;
         nums[1] = 20;
         nums[2] = 30;
         nums[3] = 40;
         nums[4] = 55;
-        System.out.println(nums.length);
+        System.out.println("Length: " + nums.length);
+        System.out.println("Last Item: " + nums[5]);
+
 
         char[] alphabet = { 'a', 'b', 'c' }; // 0 1 2
-        System.out.println(alphabet.length);
+        System.out.println("Length: " + alphabet.length);
+        System.out.println("Second Item: " + alphabet[1]);
         alphabet[1] = 'B';
+        System.out.println("Second Item: " + alphabet[1]);
 
-        char[] alphabet2 = new char[alphabet.length + 1];
+
+        char[] alphabet2 = new char[ alphabet.length + 1 ]; // 3 + 1
         for (int i = 0; i < alphabet.length; i++) {
             alphabet2[i] = alphabet[i];
-        } // { 'a', 'b', 'c'. '' }
-        System.out.println(alphabet2[2]);
-        System.out.println(alphabet2[3] = 'd'); // assign 'd' to the variable, then retrieve value
+        } // alphabet2 = { 'a', 'B', 'c', null }
+        System.out.println("Third Element: " + alphabet2[2]);
+        System.out.println("Fourth Element: " + alphabet2[3]);
+        System.out.println("Fourth Element: " + (alphabet2[3] = 'D')); // assign 'D' to the variable, then retrieve value
 
 
         System.out.println("CAESAR'S CIPHER");
+        // EXAMPLE:
+        // Plain Message:      ATTACK
+        // Cipher:             +5
+        // Encrypted Message:  FYYFHP
         // CHALLENGE
-        // CAESAR CIPHER (Encryption)
-        // Alphabet: { 'A' ... 'Z', '0' ... '9' }
-        // Cipher: 3
+        // Alphabet:    { 'A' ... 'Z', '0' ... '9' }
+        // Cipher:      +3
         // Plaint Text: "APPLE"
-        // Encrypted: "DSSOH"
-        String plainText = "APPLE1239";
+        // Encrypted:   "DSSOH"
+        String plainText = "APPLE123";
         System.out.println("Plaint Text: " + plainText);
         System.out.println("Encrypted: " + encrypt(plainText, 10));
     }

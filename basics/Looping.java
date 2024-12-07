@@ -4,21 +4,21 @@ public class Looping {
     public static void main(String[] args) {
         System.out.println("JAVA LOOPING");
 
-        // do-while
+        // 1. do-while
         System.out.println("do-while");
         int i = 1;
         do {
             System.out.println(i++);
         } while (i < 10);
 
-        // while
+        // 2. while
         System.out.println("while");
         i = 11;
         while (i < 10) {
             System.out.println(i++);
         }
 
-        // for
+        // 3. for
         System.out.println("for");
         for (int j = 1; j < 10; j++) {
             System.out.println(j);
@@ -60,5 +60,7 @@ public class Looping {
             }
             System.out.println(); // Same as print("\n")
         }
+
+        // 4. foreach Loop (used for Arrays)
     }
 }
