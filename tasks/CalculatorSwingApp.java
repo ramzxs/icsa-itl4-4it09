@@ -13,8 +13,8 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 public class CalculatorSwingApp extends JFrame {
-    JLabel lblExpression = new JLabel("Expression   ");
-    JLabel lblResult = new JLabel("Result   ");
+    JLabel lblExpression = new JLabel("Expression  ");
+    JLabel lblResult = new JLabel("Result  ");
     JButton[] btnNumbers = new JButton[10];
     JButton[] btnOperators = new JButton[7];
 
@@ -183,15 +183,66 @@ public class CalculatorSwingApp extends JFrame {
 
 
     // LOGIC
-
+    
     String termLeft = "", termRight = ""; 
     String operatorPrevious = "", operatorCurrent = "";
 
+
     void processNumber(String n) {
-        System.out.println("Number: " + n);
+        if (operatorPrevious.equals("")) {
+            if (termLeft.equals("") && n.equals("0")) {
+
+            } else {
+                termLeft += n;  // Append
+            }
+        } else {
+            if (termRight.equals("") && n.equals("0")) {
+
+            } else {
+                termRight += n;  // Append
+            }
+        }
+
+        display();
     }
 
     void processOperator(String op) {
-        System.out.println("Operator: " + op);
+        if (op.equals("C")) {
+            termLeft = "";
+            operatorPrevious = "";
+            termRight = "";
+            operatorCurrent = "";
+        } else {
+            if (termRight.equals("")) {
+                if (termLeft.equals("")) {
+    
+                } else {
+                    operatorPrevious = op;
+                }
+            } else {
+                operatorCurrent = op;
+
+                // Compute
+                switch (op) {
+                    case "=":
+                        lblResult.setText("Perform");
+                        break;
+                    default:
+                        lblResult.setText("Error");
+                        break;
+                }
+            }
+        }
+
+        display();
+    }
+
+    void display() {
+        System.out.println("termL: " + termLeft);
+        System.out.println("opPrev: " + operatorPrevious);
+        System.out.println("termR: " + termRight);
+        System.out.println("opCurr: " + operatorCurrent);
+
+        lblExpression.setText(termLeft + " " + operatorPrevious + " " + termRight + " " + operatorCurrent + "  ");
     }
 }
