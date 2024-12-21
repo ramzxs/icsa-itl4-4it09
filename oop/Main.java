@@ -36,7 +36,7 @@ public class Main {
         // Protect internal data
         // Implement policy / additional logic
         UserSession userSession = new UserSession();
-        // userSession.user = null; (No Direct Access)
+        // userSession.user = null; // No Direct Access
         userSession.setUser(new User());
         // System.out.println(userSession.start);
         userSession.getStart();
@@ -48,7 +48,6 @@ public class Main {
         // CheckingAccount ca = new CheckingAccount();
         account = new SavingsAccount();
         account = new CheckingAccount();
-
 
 
         // ABSTRACTION

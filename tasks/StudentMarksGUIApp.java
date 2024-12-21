@@ -29,9 +29,14 @@ public class StudentMarksGUIApp extends JFrame {
 
         // Data to be displayed in the JTable
         String[][] data = new String[studentMarks.length][3];
+        // data = [
+        //   0 => [ 0 => "",  1 => "",  2 => "" ],
+        //   1 => [ 0 => "",  1 => "",  2 => "" ],
+        //   2 => [ 0 => "",  1 => "",  2 => "" ],
+        // ]
 
         for (int i = 0; i < studentMarks.length; i++) {
-            data[i] = new String[3];
+            data[i] = new String[3]; // data[2] = [ "", "", "" ]
             data[i][0] = studentMarks[i].student;
             data[i][1] = studentMarks[i].math + "";
             data[i][2] = studentMarks[i].physics + "";
