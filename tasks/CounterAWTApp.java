@@ -8,9 +8,11 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.BoxLayout;
 
-
 public class CounterAWTApp extends Frame {
     int val = 0;
+
+    TextField counter = new TextField("0");
+    Button count = new Button("Count");
 
     public static void main(String[] args) {
         new CounterAWTApp();
@@ -28,17 +30,12 @@ public class CounterAWTApp extends Frame {
             }
         });
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-
-        TextField counter = new TextField( String.valueOf(val) );
+        // Text Field
         counter.setEditable(false);
         Font font1 = new Font("Arial", NORMAL, 64);
         counter.setFont(font1);
-        this.add(counter, BorderLayout.NORTH);
 
-
-        Button count = new Button("Count");
+        // Button
         Font font2 = new Font("Arial", NORMAL, 32);
         count.setFont(font2);
         count.addActionListener(new ActionListener() {
@@ -47,8 +44,11 @@ public class CounterAWTApp extends Frame {
                 counter.setText(String.valueOf(++val));
             }
         });
-        this.add(count, BorderLayout.SOUTH);
 
+        // Layout
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.add(counter, BorderLayout.NORTH);
+        this.add(count, BorderLayout.SOUTH);
         this.setVisible(true);
     }
 }

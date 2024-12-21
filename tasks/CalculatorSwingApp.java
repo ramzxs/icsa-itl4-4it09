@@ -30,11 +30,9 @@ public class CalculatorSwingApp extends JFrame {
         // Numbers:   0 1 2 3 4 5 6 7 8 9
         // Operators: =    + - * / %    C
         // Example:   150 + 10% --> 150 + 15 = --> 165
-
-        this.setLayout(new GridBagLayout());
-        Font font = new Font("Arial", Font.PLAIN, 16);
-        this.setFont(font);
         
+        // Layout
+        this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = (float) 1/4;
@@ -63,7 +61,6 @@ public class CalculatorSwingApp extends JFrame {
 
 
         // NUMBERS
-
         btnNumbers[0] = new JButton("0");
         gbc.gridy = 6;
         gbc.gridx = 1;
@@ -116,20 +113,6 @@ public class CalculatorSwingApp extends JFrame {
         gbc.gridx = 2;
         this.add(btnNumbers[9], gbc);
 
-        ActionListener actionListenerNumbers = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                processNumber(e.getActionCommand());
-            }
-        };
-
-        for (int i = 0; i < btnNumbers.length; i++) {
-            btnNumbers[i].setActionCommand(i + "");
-            btnNumbers[i].addActionListener(actionListenerNumbers);
-            btnNumbers[i].setFont(font);
-        }
-
-
         // OPERATORS
         gbc.gridx = 3;
 
@@ -153,7 +136,7 @@ public class CalculatorSwingApp extends JFrame {
         gbc.gridy = 2;
         this.add(btnOperators[4], gbc);
 
-        btnOperators[5] = new JButton("%");
+        btnOperators[5] = new JButton("%"); // Percentage (not Modulo/Remainder)
         gbc.gridy = 1;
         this.add(btnOperators[5], gbc);
 
@@ -162,12 +145,30 @@ public class CalculatorSwingApp extends JFrame {
         this.add(btnOperators[6], gbc);
 
 
+        // EVENT LISTENERS
+        ActionListener actionListenerNumbers = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                processNumber(e.getActionCommand());
+            }
+        };
+
         ActionListener actionListenerOperators = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 processOperator(e.getActionCommand());
             }
         };
+
+        // Generic Font
+        Font font = new Font("Arial", Font.PLAIN, 16);
+        this.setFont(font);
+        
+        for (int i = 0; i < btnNumbers.length; i++) {
+            btnNumbers[i].setActionCommand(i + "");
+            btnNumbers[i].addActionListener(actionListenerNumbers);
+            btnNumbers[i].setFont(font);
+        }
 
         for (int i = 0; i < btnOperators.length; i++) {
             btnOperators[i].setActionCommand(btnOperators[i].getText());
