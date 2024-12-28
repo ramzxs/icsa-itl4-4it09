@@ -192,7 +192,9 @@ public class CalculatorSwingApp extends JFrame {
             if (termRight.equals("") && n.equals("0")) {
 
             } else {
-                termRight += n; // Append
+                if (operatorCurrent.equals("")) {
+                    termRight += n; // Append
+                }
             }
         }
 
