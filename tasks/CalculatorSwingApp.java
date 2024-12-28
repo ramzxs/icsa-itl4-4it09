@@ -212,7 +212,9 @@ public class CalculatorSwingApp extends JFrame {
 
                 } else {
                     if (op.equals("%") || op.equals("=")) {
-
+                        // Ignore % and = as operatorPrevious
+                        // 1 %
+                        // 1 =
                     } else {
                         operatorPrevious = op;
                     }
@@ -222,55 +224,40 @@ public class CalculatorSwingApp extends JFrame {
 
                 // Actual Calculation
                 double r;
-                switch (operatorCurrent) {
-                    case "=":
-                        switch (operatorPrevious) {
-                            case "+":
-                                r = Double.valueOf(termLeft) + Double.valueOf(termRight);
-                                result = String.valueOf(r);
-                                break;
-                            case "-":
-                                r = Double.valueOf(termLeft) - Double.valueOf(termRight);
-                                result = String.valueOf(r);
-                                break;
-                            case "*":
-                                r = Double.valueOf(termLeft) * Double.valueOf(termRight);
-                                result = String.valueOf(r);
-                                break;
-                            case "/":
-                                r = Double.valueOf(termLeft) / Double.valueOf(termRight);
-                                result = String.valueOf(r);
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case "%":
-                        r = Double.valueOf(termLeft) * (Double.valueOf(termRight) / 100);
-                        termRight = String.valueOf(r);
-                        switch (operatorPrevious) {
-                            case "+":
-                                r = Double.valueOf(termLeft) + Double.valueOf(termRight);
-                                result = String.valueOf(r);
-                                break;
-                            case "-":
-                                r = Double.valueOf(termLeft) - Double.valueOf(termRight);
-                                result = String.valueOf(r);
-                                break;
-                            case "*":
-                                r = Double.valueOf(termLeft) * Double.valueOf(termRight);
-                                result = String.valueOf(r);
-                                break;
-                            case "/":
-                                r = Double.valueOf(termLeft) / Double.valueOf(termRight);
-                                result = String.valueOf(r);
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    default:
-                        break;
+
+                if (operatorCurrent.equals("%")) {
+                    r = Double.valueOf(termLeft) * (Double.valueOf(termRight) / 100);
+                    termRight = String.valueOf(r);
+                    operatorCurrent = "";
+                    result = "";
+                } else {
+                    switch (operatorPrevious) {
+                        case "+":
+                            r = Double.valueOf(termLeft) + Double.valueOf(termRight);
+                            result = String.valueOf(r);
+                            break;
+                        case "-":
+                            r = Double.valueOf(termLeft) - Double.valueOf(termRight);
+                            result = String.valueOf(r);
+                            break;
+                        case "*":
+                            r = Double.valueOf(termLeft) * Double.valueOf(termRight);
+                            result = String.valueOf(r);
+                            break;
+                        case "/":
+                            r = Double.valueOf(termLeft) / Double.valueOf(termRight);
+                            result = String.valueOf(r);
+                            break;
+                    }
+
+                    if (operatorCurrent.equals("=")) {
+
+                    } else {
+                        termLeft = result;
+                        operatorPrevious = operatorCurrent;
+                        termRight = "";
+                        operatorCurrent= "";
+                    }
                 }
             }
         }
@@ -287,8 +274,5 @@ public class CalculatorSwingApp extends JFrame {
 
         lblExpression.setText(termLeft + " " + operatorPrevious + " " + termRight + " " + operatorCurrent + "  ");
         lblResult.setText(result + "  ");
-        if (!result.equals("")) {
-            result = "";
-        }
     }
 }
