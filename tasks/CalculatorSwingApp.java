@@ -24,7 +24,7 @@ public class CalculatorSwingApp extends JFrame {
 
     public CalculatorSwingApp() {
         this.setTitle("Calculator Swing App");
-        this.setSize(600, 600);
+        this.setSize(800, 600);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // Numbers: 0 1 2 3 4 5 6 7 8 9
@@ -251,6 +251,8 @@ public class CalculatorSwingApp extends JFrame {
                             result = String.valueOf(r);
                             break;
                     }
+                    
+                    // TODO: Remove ".0" 
 
                     if (operatorCurrent.equals("=")) {
 
