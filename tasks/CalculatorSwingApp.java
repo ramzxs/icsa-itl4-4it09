@@ -27,17 +27,16 @@ public class CalculatorSwingApp extends JFrame {
         this.setSize(600, 600);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        // Numbers:   0 1 2 3 4 5 6 7 8 9
-        // Operators: =    + - * / %    C
-        // Example:   150 + 10% --> 150 + 15 = --> 165
-        
+        // Numbers: 0 1 2 3 4 5 6 7 8 9
+        // Operators: = + - * / % C
+        // Example: 150 + 10% --> 150 + 15 = --> 165
+
         // Layout
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
-        gbc.weightx = (float) 1/4;
-        gbc.weighty = (float) 1/7;
-
+        gbc.weightx = (float) 1 / 4;
+        gbc.weighty = (float) 1 / 7;
 
         // DISPLAY
         Font font1 = new Font("Arial", Font.PLAIN, 16);
@@ -58,7 +57,6 @@ public class CalculatorSwingApp extends JFrame {
 
         gbc.gridwidth = 1;
         gbc.gridheight = 1;
-
 
         // NUMBERS
         btnNumbers[0] = new JButton("0");
@@ -81,7 +79,6 @@ public class CalculatorSwingApp extends JFrame {
         gbc.gridx = 2;
         this.add(btnNumbers[3], gbc);
 
-        
         btnNumbers[4] = new JButton("4");
         gbc.gridy = 4;
         gbc.gridx = 0;
@@ -96,7 +93,6 @@ public class CalculatorSwingApp extends JFrame {
         gbc.gridy = 4;
         gbc.gridx = 2;
         this.add(btnNumbers[6], gbc);
-
 
         btnNumbers[7] = new JButton("7");
         gbc.gridy = 3;
@@ -144,7 +140,6 @@ public class CalculatorSwingApp extends JFrame {
         gbc.gridy = 0;
         this.add(btnOperators[6], gbc);
 
-
         // EVENT LISTENERS
         ActionListener actionListenerNumbers = new ActionListener() {
             @Override
@@ -163,7 +158,7 @@ public class CalculatorSwingApp extends JFrame {
         // Generic Font
         Font font = new Font("Arial", Font.PLAIN, 16);
         this.setFont(font);
-        
+
         for (int i = 0; i < btnNumbers.length; i++) {
             btnNumbers[i].setActionCommand(i + "");
             btnNumbers[i].addActionListener(actionListenerNumbers);
@@ -176,30 +171,28 @@ public class CalculatorSwingApp extends JFrame {
             btnOperators[i].setFont(font);
         }
 
-
         // UI
         this.setVisible(true);
     }
 
-
     // LOGIC
-    
-    String termLeft = "", termRight = ""; 
-    String operatorPrevious = "", operatorCurrent = "";
 
+    String termLeft = "", termRight = "";
+    String operatorPrevious = "", operatorCurrent = "";
+    String result = "";
 
     void processNumber(String n) {
         if (operatorPrevious.equals("")) {
             if (termLeft.equals("") && n.equals("0")) {
 
             } else {
-                termLeft += n;  // Append
+                termLeft += n; // Append
             }
         } else {
             if (termRight.equals("") && n.equals("0")) {
 
             } else {
-                termRight += n;  // Append
+                termRight += n; // Append
             }
         }
 
@@ -212,23 +205,71 @@ public class CalculatorSwingApp extends JFrame {
             operatorPrevious = "";
             termRight = "";
             operatorCurrent = "";
+            result = "";
         } else {
             if (termRight.equals("")) {
                 if (termLeft.equals("")) {
-    
+
                 } else {
-                    operatorPrevious = op;
+                    if (op.equals("%") || op.equals("=")) {
+
+                    } else {
+                        operatorPrevious = op;
+                    }
                 }
             } else {
                 operatorCurrent = op;
 
-                // Compute
-                switch (op) {
+                // Actual Calculation
+                double r;
+                switch (operatorCurrent) {
                     case "=":
-                        lblResult.setText("Perform");
+                        switch (operatorPrevious) {
+                            case "+":
+                                r = Double.valueOf(termLeft) + Double.valueOf(termRight);
+                                result = String.valueOf(r);
+                                break;
+                            case "-":
+                                r = Double.valueOf(termLeft) - Double.valueOf(termRight);
+                                result = String.valueOf(r);
+                                break;
+                            case "*":
+                                r = Double.valueOf(termLeft) * Double.valueOf(termRight);
+                                result = String.valueOf(r);
+                                break;
+                            case "/":
+                                r = Double.valueOf(termLeft) / Double.valueOf(termRight);
+                                result = String.valueOf(r);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "%":
+                        r = Double.valueOf(termLeft) * (Double.valueOf(termRight) / 100);
+                        termRight = String.valueOf(r);
+                        switch (operatorPrevious) {
+                            case "+":
+                                r = Double.valueOf(termLeft) + Double.valueOf(termRight);
+                                result = String.valueOf(r);
+                                break;
+                            case "-":
+                                r = Double.valueOf(termLeft) - Double.valueOf(termRight);
+                                result = String.valueOf(r);
+                                break;
+                            case "*":
+                                r = Double.valueOf(termLeft) * Double.valueOf(termRight);
+                                result = String.valueOf(r);
+                                break;
+                            case "/":
+                                r = Double.valueOf(termLeft) / Double.valueOf(termRight);
+                                result = String.valueOf(r);
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     default:
-                        lblResult.setText("Error");
                         break;
                 }
             }
@@ -242,7 +283,12 @@ public class CalculatorSwingApp extends JFrame {
         System.out.println("opPrev: " + operatorPrevious);
         System.out.println("termR: " + termRight);
         System.out.println("opCurr: " + operatorCurrent);
+        System.out.println("result: " + result + "\n******\n");
 
         lblExpression.setText(termLeft + " " + operatorPrevious + " " + termRight + " " + operatorCurrent + "  ");
+        lblResult.setText(result + "  ");
+        if (!result.equals("")) {
+            result = "";
+        }
     }
 }
