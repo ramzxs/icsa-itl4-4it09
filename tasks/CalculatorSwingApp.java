@@ -252,7 +252,7 @@ public class CalculatorSwingApp extends JFrame {
                             break;
                     }
                     
-                    // TODO: Remove ".0" 
+                    result = result.replaceAll("\\.0$", "");
 
                     if (operatorCurrent.equals("=")) {
 
