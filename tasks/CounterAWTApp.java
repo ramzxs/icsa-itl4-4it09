@@ -32,7 +32,7 @@ public class CounterAWTApp extends Frame {
 
         // Text Field
         counter.setEditable(false);
-        Font font1 = new Font("Arial", NORMAL, 64);
+        Font font1 = new Font("Courier", Font.BOLD, 128);
         counter.setFont(font1);
 
         // Button
@@ -41,7 +41,7 @@ public class CounterAWTApp extends Frame {
         count.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                counter.setText(String.valueOf(++val));
+                counter.setText( String.valueOf(++val) );
             }
         });
 

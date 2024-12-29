@@ -4,12 +4,13 @@ public class StudentMarksApp {
     public static void main(String[] args) {
         // CONSOLE APP
 
-        // String[] names     = { "", "", "", "" };
-        // int[] mathMarks    = {  0,  0,  0,  0 };
-        // int[] physicsMarks = {  0,  0,  0,  0 };
+        // Three 1-Dimensional Arrays
+        // String[] names     = { "Jane", "Jon", "Stewart" };
+        // int[] mathMarks    = {     40,    70,        80 };
+        // int[] physicsMarks = {     20,    60,        75 };
 
         // Using Array of Objects
-        StudentMark[] studentMarks = new StudentMark[3];
+        StudentMark[] studentMarks = new StudentMark[3]; // { Object1, Object2, Object3 }
 
         studentMarks[0] = new StudentMark(); // { "", 0, 0 }
         studentMarks[0].student = "Jane";

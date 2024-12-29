@@ -59,8 +59,8 @@ public class Basics { // File name
         // Division
         System.out.println((float) 10 / 3); // Type Casting
 
-        // Remainder
-        System.out.println("Remainder: " + 10 % 3); // 10 % 3 = 3 remainder 1
+        // Modulo / Remainder Operator
+        System.out.println("Remainder: " + 10 % 3); // 10 / 3 = 3 remainder 1
 
         // CHALLENGE
         // Celsius to Fahrenheit
