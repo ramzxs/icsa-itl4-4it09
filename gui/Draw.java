@@ -1,8 +1,7 @@
-package tasks;
+package gui;
 
 import java.awt.Label;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseWheelListener;
 
 import javax.swing.JFrame;
 import javax.swing.event.MouseInputAdapter;
